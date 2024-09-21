@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">HippocratesJournal</string>
+    <string name="guest">Continue as Guest</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="email_signup">Please enter your email</string>
+    <string name="password_signup">Please enter your password</string>
+    <string name="app_descr_main_scr">Medical Incident Recording App Hippocrates Journal</string>
+    <string-array name="gender_options">
+        <item>she/her</item>
+        <item>he/him</item>
+        <item>they/them</item>
+    </string-array>
+</resources>
