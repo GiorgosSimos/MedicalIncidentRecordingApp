@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "877474604314",
+    "firebase_url": "https://hippocratesjournal-6b5cb-default-rtdb.firebaseio.com",
+    "project_id": "hippocratesjournal",
+    "storage_bucket": "hippocratesjournal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877474604314:android:fdeee6cfdead5f1b1c78a3",
+        "android_client_info": {
+          "package_name": "com.unipi.mobile_dev.hippocratesjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlmgUT6SkYf000IQdbctTz6MBK8wgR5vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:877474604314:android:fdeee6cfdead5f1b1c78a3",
+        "android_client_info": {
+          "package_name": "com.unipi.mobile_dev.hippocratesjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlmgUT6SkYf000IQdbctTz6MBK8wgR5vM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516638721881:android:bc40946fab30af8cfcee48",
+        "android_client_info": {
+          "package_name": "com.unipi.mobile_dev.hippocratesjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZq8Zwkn77_cMHnzzPzPxrGFiDyHY3-bY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
