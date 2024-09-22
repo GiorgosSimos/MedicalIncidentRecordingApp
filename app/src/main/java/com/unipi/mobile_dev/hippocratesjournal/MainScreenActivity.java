@@ -1,19 +1,18 @@
 package com.unipi.mobile_dev.hippocratesjournal;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
+//import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+//import androidx.core.graphics.Insets;
+//import androidx.core.view.ViewCompat;
+//import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -86,6 +85,11 @@ public class MainScreenActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void displayAllIncidents(View view) {
+        Intent intent = new Intent(MainScreenActivity.this, DisplayAllIncidentsActivity.class);
+        startActivity(intent);
     }
 
     void showMessage(String title, String message){

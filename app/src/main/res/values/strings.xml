@@ -6,6 +6,12 @@
     <string name="email_signup">Please enter your email</string>
     <string name="password_signup">Please enter your password</string>
     <string name="app_descr_main_scr">Medical Incident Recording App Hippocrates Journal</string>
+    <string name="cardView_patient_name">Patient Name</string>
+    <string name="cardView_doe">Date of Examination</string>
+    <string name="cardView_diagnosis">Diagnosis</string>
+    <string name="main_screen_new_incident_button">New Incident</string>
+    <string name="main_screen_search_button">Search Incident</string>
+    <string name="main_screen_display_all_button">Display all Incidents</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
