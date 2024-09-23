@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blueBlack"
+    tools:context=".DetailedIncidentActivity">
+
+    <Button
+        android:id="@+id/deleteIncidentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E53935"
+        android:text="@string/dtld_delete_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
+
+    <EditText
+        android:id="@+id/editTextIncidentName"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/dtldIncidentName"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <EditText
+        android:id="@+id/editTextIncidentSymptoms"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:hint="@string/dtld_symptoms"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <EditText
+        android:id="@+id/editTextIncidentDiagnosis"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:hint="@string/dtld_diagnosis"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <EditText
+        android:id="@+id/editTextIncidentPrescription"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:hint="@string/dtld_prescription"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.80" />
+
+    <EditText
+        android:id="@+id/incidentDobEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="@string/dtld_dob"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.20" />
+
+    <EditText
+        android:id="@+id/incidentDoeEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="@string/dtld_doe"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <EditText
+        android:id="@+id/incidentGenderEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="@string/dtld_gender"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

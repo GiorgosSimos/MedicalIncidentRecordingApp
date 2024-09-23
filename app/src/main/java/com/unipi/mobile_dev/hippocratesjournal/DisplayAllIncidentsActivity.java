@@ -34,7 +34,7 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         incidentList = new ArrayList<>();
-        incidentAdapter = new IncidentAdapter(incidentList);
+        incidentAdapter = new IncidentAdapter(this, incidentList);
         recyclerView.setAdapter(incidentAdapter);
 
         // Firebase database reference

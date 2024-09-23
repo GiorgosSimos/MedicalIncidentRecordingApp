@@ -12,6 +12,14 @@
     <string name="main_screen_new_incident_button">New Incident</string>
     <string name="main_screen_search_button">Search Incident</string>
     <string name="main_screen_display_all_button">Display all Incidents</string>
+    <string name="dtldIncidentName">Patient Name</string>
+    <string name="dtld_symptoms">Referent Symptoms</string>
+    <string name="dtld_diagnosis">Diagnosis</string>
+    <string name="dtld_prescription">Prescription</string>
+    <string name="dtld_dob">Date of Birth</string>
+    <string name="dtld_doe">Date of Examination</string>
+    <string name="dtld_gender">Gender</string>
+    <string name="dtld_delete_button">Delete</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
