@@ -45,6 +45,7 @@ public class IncidentAdapter extends RecyclerView.Adapter<IncidentAdapter.Incide
             Intent intent = new Intent(context, DetailedIncidentActivity.class);
 
             // Pass incident details to the new activity
+            intent.putExtra("incidentId", incident.getKey());
             intent.putExtra("name", incident.getName());
             intent.putExtra("dob", incident.getDateOfBirth());
             intent.putExtra("doe", incident.getDateOfExamination());

@@ -18,10 +18,8 @@ import java.util.List;
 
 public class DisplayAllIncidentsActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private IncidentAdapter incidentAdapter;
     private List<Incident> incidentList;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
 
     @Override
@@ -29,7 +27,7 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_all_incidents);
         //Initialize the RecyclerView and list
-        recyclerView = findViewById(R.id.incidentsRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.incidentsRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,7 +36,7 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
         recyclerView.setAdapter(incidentAdapter);
 
         // Firebase database reference
-        database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         reference = database.getReference("incidents");
 
         //Retrieve incidents from Firebase and update the RecyclerView
@@ -52,6 +50,11 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
                 incidentList.clear();// Clear the list each time before adding new data
                 for (DataSnapshot dataSnapshot :snapshot.getChildren()){
                     Incident incident = dataSnapshot.getValue(Incident.class);
+                    String key = dataSnapshot.getKey();
+
+                    // Store the incident data along with the key
+                    assert incident != null;
+                    incident.setKey(key);
                     incidentList.add(incident); // Add each incident to the list
                 }
                 incidentAdapter.notifyDataSetChanged(); // Notify the adapter that data has changed

@@ -1,6 +1,7 @@
 package com.unipi.mobile_dev.hippocratesjournal;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,20 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,22 +29,15 @@ public class NewIncidentActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_incident);
         database = FirebaseDatabase.getInstance();
         name = findViewById(R.id.editTextName);
         symptoms = findViewById(R.id.editTextSymptoms);
         diagnosis = findViewById(R.id.editTextDiagnosis);
         prescription = findViewById(R.id.editTextPrescription);
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
         genderSpinner = findViewById(R.id.genderSpinner);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -130,12 +117,20 @@ public class NewIncidentActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     showMessage("Success", "Incident successfully registered!");
+
                 } else {
                     showMessage("Error", "Something went wrong, please try again!");
                 }
+                navigateToMainScreen();
+                finish();
             }
         });
 
+    }
+
+    public void navigateToMainScreen() {
+        Intent intent = new Intent(NewIncidentActivity.this, MainScreenActivity.class);
+        startActivity(intent);
     }
 
     private void showMessage(String title, String message) {
