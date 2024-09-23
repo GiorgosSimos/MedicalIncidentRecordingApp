@@ -120,7 +120,7 @@ public class NewIncidentActivity extends AppCompatActivity {
                 showMessage("Error", "Something went wrong, please try again!");
             }
             navigateToMainScreen();
-            finish();
+            //finish();
         });
 
     }
@@ -134,7 +134,7 @@ public class NewIncidentActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
-                .setCancelable(true)
+                .setPositiveButton("OK", (((dialog, which) -> dialog.dismiss())))
                 .show();
     }
 }
