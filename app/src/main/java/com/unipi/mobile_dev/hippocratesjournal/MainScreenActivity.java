@@ -14,14 +14,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainScreenActivity extends AppCompatActivity {
 
     TextView bulletTextView;
-    FirebaseDatabase database;
-    DatabaseReference reference;
+    //FirebaseDatabase database;
+    //DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        database = FirebaseDatabase.getInstance();
         bulletTextView = findViewById(R.id.bulletTextView);
         String bulletText = "<p>The app allows you to perform the following tasks:</p>" +
                 "<br>" +
