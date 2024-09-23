@@ -20,6 +20,7 @@
     <string name="dtld_doe">Date of Examination</string>
     <string name="dtld_gender">Gender</string>
     <string name="dtld_delete_button">Delete</string>
+    <string name="dtld_update_button">Update</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
