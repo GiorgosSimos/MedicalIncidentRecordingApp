@@ -112,18 +112,15 @@ public class NewIncidentActivity extends AppCompatActivity {
         );
 
         reference = database.getReference("incidents");
-        reference.push().setValue(incident).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    showMessage("Success", "Incident successfully registered!");
+        reference.push().setValue(incident).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                showMessage("Success", "Incident successfully registered!");
 
-                } else {
-                    showMessage("Error", "Something went wrong, please try again!");
-                }
-                navigateToMainScreen();
-                finish();
+            } else {
+                showMessage("Error", "Something went wrong, please try again!");
             }
+            navigateToMainScreen();
+            finish();
         });
 
     }

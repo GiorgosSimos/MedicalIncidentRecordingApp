@@ -4,14 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -65,17 +59,15 @@ public class DetailedIncidentActivity extends AppCompatActivity {
         builder.setMessage("Are you sure you want to delete this incident");
 
         // If the user clicks Yes, delete the incident
-        builder.setPositiveButton("Yes", ((dialog, which) -> {
-            reference.child(incidentId).removeValue()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            showAlert("Successful Delete","Incident deleted successfully!");
-                        } else {
-                            showAlert("Delete Failed","Failed to delete incident. Please try again.");
-                        }
-                        navigateToMainScreen();
-                    });
-        }));
+        builder.setPositiveButton("Yes", ((dialog, which) -> reference.child(incidentId).removeValue()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        showAlert("Successful Delete","Incident deleted successfully!");
+                    } else {
+                        showAlert("Delete Failed","Failed to delete incident. Please try again.");
+                    }
+                    navigateToMainScreen();
+                })));
 
         // If the user clicks No, nothing happens
         builder.setNegativeButton("No", ((dialog, which) -> dialog.dismiss()));
