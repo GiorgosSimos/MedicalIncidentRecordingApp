@@ -26,7 +26,7 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_all_incidents);
-        //Initialize the RecyclerView and list
+        //Initialize the RecyclerView and the incident list
         RecyclerView recyclerView = findViewById(R.id.incidentsRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
