@@ -100,6 +100,10 @@ public class NewIncidentActivity extends AppCompatActivity {
         String patientSymptoms = symptoms.getText().toString();
         String doctorDiagnosis = diagnosis.getText().toString();
         String doctorPrescription = prescription.getText().toString();
+        boolean nameEmpty = patientName.isEmpty();
+        boolean symptomsEmpty = patientSymptoms.isEmpty();
+        boolean diagnosisEmpty = doctorDiagnosis.isEmpty();
+        boolean prescriptionEmpty = doctorPrescription.isEmpty();
 
         Incident incident = new Incident(
                 patientName,
@@ -111,23 +115,49 @@ public class NewIncidentActivity extends AppCompatActivity {
                 doctorPrescription
         );
 
-        reference = database.getReference("incidents");
-        reference.push().setValue(incident).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                showMessage("Success", "Incident successfully registered!");
+        if (!nameEmpty && !symptomsEmpty && !diagnosisEmpty && !prescriptionEmpty) {
+            reference = database.getReference("incidents");
+            reference.push().setValue(incident).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    showMessage("Success", "Incident successfully registered!");
 
-            } else {
-                showMessage("Error", "Something went wrong, please try again!");
-            }
-            navigateToMainScreen();
-            //finish();
-        });
-
+                } else {
+                    showMessage("Error", "Something went wrong, please try again!");
+                }
+                navigateToMainScreen();
+            });
+        } else {
+            showErrorMessages(nameEmpty, symptomsEmpty, diagnosisEmpty, prescriptionEmpty);
+        }
     }
 
     public void navigateToMainScreen() {
         Intent intent = new Intent(NewIncidentActivity.this, MainScreenActivity.class);
         startActivity(intent);
+    }
+
+    private void showErrorMessages(boolean nameEmpty, boolean symptomsEmpty, boolean diagnosisEmpty, boolean prescriptionEmpty) {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (nameEmpty) {
+            errorMessage.append("Patient name");
+        }
+        if (symptomsEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append("Symptoms");
+        }
+        if (diagnosisEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append("Diagnosis");
+        }
+        if (prescriptionEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append("Prescription");
+        }
+
+        if (errorMessage.length() > 0) {
+            showMessage("Error", errorMessage.append(" cannot be empty").toString());
+        }
     }
 
     private void showMessage(String title, String message) {
