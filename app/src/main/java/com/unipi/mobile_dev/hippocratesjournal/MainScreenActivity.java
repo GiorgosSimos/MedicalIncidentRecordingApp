@@ -6,16 +6,11 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainScreenActivity extends AppCompatActivity {
 
     TextView bulletTextView;
-    //FirebaseDatabase database;
-    //DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +32,14 @@ public class MainScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void displayAllIncidents(View view) {
-        Intent intent = new Intent(MainScreenActivity.this, DisplayAllIncidentsActivity.class);
+    public void searchIncident(View view) {
+        Intent intent = new Intent(MainScreenActivity.this, SearchActivity.class);
         startActivity(intent);
     }
 
-    void showMessage(String title, String message){
-        new AlertDialog.Builder(this).
-                setTitle(title).
-                setMessage(message).
-                setCancelable(true).
-                show();
+    public void displayAllIncidents(View view) {
+        Intent intent = new Intent(MainScreenActivity.this, DisplayAllIncidentsActivity.class);
+        startActivity(intent);
     }
 
 }

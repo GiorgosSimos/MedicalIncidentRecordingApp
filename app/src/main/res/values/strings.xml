@@ -22,9 +22,19 @@
     <string name="dtld_delete_button">Delete</string>
     <string name="dtld_update_button">Update</string>
     <string name="dtld_save_button">Save</string>
+    <string name="search_act_diagnosis">Diagnosis</string>
+    <string name="search_act_doe">Date of Examination</string>
+    <string name="search_act_name">Patient Name</string>
+    <string name="search_button">Search</string>
+    <string name="select_button">Select</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
         <item>they/them</item>
+    </string-array>
+    <string-array name="search_criteria_options">
+        <item>Name</item>
+        <item>Date of Examination</item>
+        <item>Diagnosis</item>
     </string-array>
 </resources>

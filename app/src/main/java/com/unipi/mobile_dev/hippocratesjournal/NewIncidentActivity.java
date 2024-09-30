@@ -164,7 +164,7 @@ public class NewIncidentActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", (((dialog, which) -> dialog.dismiss())))
+                .setPositiveButton("OK", ((dialog, which) -> dialog.dismiss()))
                 .show();
     }
 }
