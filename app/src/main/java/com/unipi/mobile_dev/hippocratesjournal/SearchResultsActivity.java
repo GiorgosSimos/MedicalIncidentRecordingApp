@@ -50,10 +50,15 @@ public class SearchResultsActivity extends AppCompatActivity {
         }
     }
 
-    //Function to perform search in Firebase
+    //Function to perform search in Realtime Database
     private void executeSearch(String criteria, String value) {
         reference = database.getReference("incidents");
-        Query query = reference.orderByChild(criteria).equalTo(value);
+        Query query;
+        if (criteria.equals("dateOfExamination")) {// For search based on date of examination, an exact match is required
+            query = reference.orderByChild(criteria).equalTo(value);
+        } else { //For search based on name, diagnosis a partial match match is required
+            query = reference.orderByChild(criteria).startAt(value).endAt(value + "\uf8ff");
+        }
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,7 +77,6 @@ public class SearchResultsActivity extends AppCompatActivity {
                     incidentAdapter.notifyDataSetChanged();
                 } else { // Redirect to search screen
                     redirectAlert("No Results", "No incidents matching your search criteria were found.");
-
                 }
             }
 

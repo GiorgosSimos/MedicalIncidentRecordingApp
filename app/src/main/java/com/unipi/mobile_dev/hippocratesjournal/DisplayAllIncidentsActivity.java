@@ -3,6 +3,7 @@ package com.unipi.mobile_dev.hippocratesjournal;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,8 +63,16 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                showAlert("Loading of all incidents failed", error.getMessage());
             }
         });
+    }
+
+    private void showAlert(String title, String message) {
+        new AlertDialog.Builder(DisplayAllIncidentsActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", ((dialog, which) -> dialog.dismiss()))
+                .show();
     }
 }
