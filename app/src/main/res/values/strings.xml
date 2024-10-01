@@ -27,6 +27,14 @@
     <string name="search_act_name">Patient Name</string>
     <string name="search_button">Search</string>
     <string name="select_button">Select</string>
+    <string name="register_button">Register</string>
+    <string name="new_incident_label">Record New Incident</string>
+    <string name="patient_name_hint">Patient Name</string>
+    <string name="referent_symptoms_hint">Referent Symptoms</string>
+    <string name="diagnosis_hint">Diagnosis</string>
+    <string name="prescription_hint">Prescription</string>
+    <string name="dob_hint">Date of Birth</string>
+    <string name="doe_hint">Date of Examination</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>

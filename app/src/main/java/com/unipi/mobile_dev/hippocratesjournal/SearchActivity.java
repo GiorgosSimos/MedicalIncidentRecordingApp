@@ -1,6 +1,7 @@
 package com.unipi.mobile_dev.hippocratesjournal;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -115,43 +116,10 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             if (!textViewValue.isEmpty()) {
-                Query query = reference;
-                query = query.orderByChild(child).equalTo(textViewValue);
-                // Execute the query
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            displayResults(snapshot);
-                        } else {
-                            showAlert("Error", "No records found!");
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        showAlert("Search Failed", error.getMessage());
-                    }
-                });
+                //Start the SearchResultsActivity with the selected searchCriteria and filled text value
+                goSearchResults(child, textViewValue);
             } else {
                 showAlert("Warning", "Fill in the selected field");
-            }
-        }
-    }
-
-    private void displayResults (DataSnapshot dataSnapshot) {
-        // You can extract and display search results here
-        StringBuilder results = new StringBuilder();
-        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-            Incident incident = snapshot.getValue(Incident.class);
-            if (incident != null) {
-                results.append("Name: ").append(incident.getName()).append("\n")
-                        .append("Date of Examination: ").append(incident.getDateOfExamination()).append("\n")
-                        .append("Gender: ").append(incident.getGender()).append("\n")
-                        .append("Symptoms: ").append(incident.getSymptoms()).append("\n")
-                        .append("Diagnosis: ").append(incident.getDiagnosis()).append("\n")
-                        .append("Prescription: ").append(incident.getPrescription()).append("\n");
-                showAlert("Search Successful", results.toString());
             }
         }
     }
@@ -181,5 +149,12 @@ public class SearchActivity extends AppCompatActivity {
                 }, year, month, day);
 
         datePickerDialog.show();
+    }
+
+    private void goSearchResults(String criteria, String filledTextValue) {
+        Intent intent = new Intent(this, SearchResultsActivity.class);
+        intent.putExtra("searchCriteria", criteria);
+        intent.putExtra("searchValue", filledTextValue);
+        startActivity(intent);
     }
 }
