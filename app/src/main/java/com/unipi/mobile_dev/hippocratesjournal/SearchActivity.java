@@ -145,4 +145,10 @@ public class SearchActivity extends AppCompatActivity {
         intent.putExtra("searchValue", filledTextValue);
         startActivity(intent);
     }
+
+    public void backPressed(View view) {
+        Intent intent = new Intent(SearchActivity.this, MainScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

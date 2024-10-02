@@ -35,6 +35,7 @@
     <string name="prescription_hint">Prescription</string>
     <string name="dob_hint">Date of Birth</string>
     <string name="doe_hint">Date of Examination</string>
+    <string name="back_descr">Back</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>

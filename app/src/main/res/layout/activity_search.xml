@@ -7,6 +7,22 @@
     android:background="@color/tanAccent"
     android:padding="16dp">
 
+    <ImageButton
+        android:id="@+id/backButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/tanAccent"
+        android:contentDescription="@string/back_descr"
+        android:onClick="backPressed"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.015"
+        app:srcCompat="@drawable/back_icon" />
+
     <EditText
         android:id="@+id/searchNameEditText"
         android:layout_width="312dp"
@@ -55,7 +71,7 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E53935"
+        android:backgroundTint="#00ACC1"
         android:onClick="executeSearch"
         android:text="@string/search_button"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +85,7 @@
         android:id="@+id/setSearchCriteriaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E53935"
+        android:backgroundTint="#00ACC1"
         android:onClick="selectCriteria"
         android:text="@string/select_button"
         app:layout_constraintBottom_toBottomOf="parent"
