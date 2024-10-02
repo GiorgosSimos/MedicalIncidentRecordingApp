@@ -49,31 +49,37 @@
 
             <TextView
                 android:id="@+id/textViewDoe"
-                android:layout_width="wrap_content"
+                android:layout_width="165dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:text="@string/cardView_doe"
+                android:textAlignment="textStart"
                 android:textColor="@color/tanAccent"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/textViewDiagnosis"
-                app:layout_constraintTop_toBottomOf="@id/textViewName"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewDiagnosis" />
 
             <TextView
                 android:id="@+id/textViewDiagnosis"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:maxLines="1"
                 android:text="@string/cardView_diagnosis"
+                android:textAlignment="textStart"
                 android:textColor="@color/tanAccent"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/imageView"
                 app:layout_constraintTop_toBottomOf="@id/textViewName"
-                />
+                app:layout_constraintVertical_bias="0.073" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
