@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tanAccent"
+    android:background="@drawable/background_img"
     tools:context=".NewIncidentActivity">
 
     <Button
@@ -139,7 +139,7 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/tanAccent"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/back_descr"
         android:onClick="backPressed"
         android:scaleType="fitXY"
