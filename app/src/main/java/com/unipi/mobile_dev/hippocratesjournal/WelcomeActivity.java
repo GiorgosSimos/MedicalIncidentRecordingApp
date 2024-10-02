@@ -31,19 +31,13 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_welcome);
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
-        sharedPreferences = getSharedPreferences("com.unipi.mobile_dev.hippocratesjournal", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("com.unipi.mobile_dev.hippocratesjournal",
+                Context.MODE_PRIVATE);
         email = findViewById(R.id.editTextEmailAddress);
         password = findViewById(R.id.editTextPassword);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
     }
 
     public void goSignIn(View view){
@@ -83,7 +77,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void visitor(View view){
-        saveUserType("Guest");
+        saveUserType("Visitor");
         navigateToMainScreen();
     }
 

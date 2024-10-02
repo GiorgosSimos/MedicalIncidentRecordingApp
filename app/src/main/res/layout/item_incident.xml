@@ -51,6 +51,7 @@
                 android:id="@+id/textViewDoe"
                 android:layout_width="165dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:text="@string/cardView_doe"
                 android:textAlignment="textStart"
                 android:textColor="@color/tanAccent"
