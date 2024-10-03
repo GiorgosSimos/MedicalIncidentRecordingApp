@@ -8,6 +8,7 @@ public class Incident {
     private String symptoms;
     private String diagnosis;
     private String prescription;
+    private String key; // Firebase key - automatically generated
 
     public Incident() {
 
@@ -77,5 +78,13 @@ public class Incident {
 
     public void setPrescription(String prescription) {
         this.prescription = prescription;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

@@ -5,13 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,13 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sign_up);
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
         email = findViewById(R.id.editTextEmailSignUp);
         password = findViewById(R.id.editTextPassword2);
         mAuth = FirebaseAuth.getInstance();
@@ -53,11 +43,11 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                showMessage("Success","New user created successfully!");
+                                showMessage(getString(R.string.success_title),getString(R.string.success_signup_description));
                                 user = mAuth.getCurrentUser();
-                                finish();// TODO might be a better way to return to welcome screen
+                                finish();
                             } else {
-                                showMessage("Error", task.getException().getLocalizedMessage());
+                                showMessage(getString(R.string.error_title), task.getException().getLocalizedMessage());
                             }
                         }
                     });
@@ -74,13 +64,13 @@ public class SignUpActivity extends AppCompatActivity {
     private void showErrorMessages(boolean emailEmpty, boolean passwordEmpty) {
         String errorMessage;
         if (emailEmpty && passwordEmpty) {
-            errorMessage = "Email and password cannot be empty";
+            errorMessage = getString(R.string.error_email_password_empty);
         } else if (emailEmpty) {
-            errorMessage = "Email cannot be empty";
+            errorMessage = getString(R.string.error_email_empty);
         } else {
-            errorMessage = "Password cannot be empty";
+            errorMessage = getString(R.string.error_password_empty);
         }
-        showMessage("Error", errorMessage);
+        showMessage(getString(R.string.error_title), errorMessage);
     }
 
     void showMessage(String title, String message){

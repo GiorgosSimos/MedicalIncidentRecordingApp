@@ -1,6 +1,7 @@
 package com.unipi.mobile_dev.hippocratesjournal;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,19 +10,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -35,22 +27,15 @@ public class NewIncidentActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_incident);
         database = FirebaseDatabase.getInstance();
         name = findViewById(R.id.editTextName);
         symptoms = findViewById(R.id.editTextSymptoms);
         diagnosis = findViewById(R.id.editTextDiagnosis);
         prescription = findViewById(R.id.editTextPrescription);
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
         genderSpinner = findViewById(R.id.genderSpinner);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -79,7 +64,7 @@ public class NewIncidentActivity extends AppCompatActivity {
         dobEditText.setOnClickListener(v -> showDatePickerDialog(dobEditText));
 
         doeEditText = findViewById(R.id.doeEditText);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy", Locale.getDefault());
         String currentDate = sdf.format(new Date());
         // Date of Examination is pre-filled to display current date
         doeEditText.setText(currentDate);
@@ -113,6 +98,10 @@ public class NewIncidentActivity extends AppCompatActivity {
         String patientSymptoms = symptoms.getText().toString();
         String doctorDiagnosis = diagnosis.getText().toString();
         String doctorPrescription = prescription.getText().toString();
+        boolean nameEmpty = patientName.isEmpty();
+        boolean symptomsEmpty = patientSymptoms.isEmpty();
+        boolean diagnosisEmpty = doctorDiagnosis.isEmpty();
+        boolean prescriptionEmpty = doctorPrescription.isEmpty();
 
         Incident incident = new Incident(
                 patientName,
@@ -124,25 +113,62 @@ public class NewIncidentActivity extends AppCompatActivity {
                 doctorPrescription
         );
 
-        reference = database.getReference("incidents");
-        reference.push().setValue(incident).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
+        if (!nameEmpty && !symptomsEmpty && !diagnosisEmpty && !prescriptionEmpty) {
+            reference = database.getReference("incidents");
+            reference.push().setValue(incident).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    showMessage("Success", "Incident successfully registered!");
-                } else {
-                    showMessage("Error", "Something went wrong, please try again!");
-                }
-            }
-        });
+                    showMessage(getString(R.string.success_title), getString(R.string.register_success_descr));
 
+                } else {
+                    showMessage(getString(R.string.error_title), getString(R.string.error_generic_descr));
+                }
+                navigateToMainScreen();
+            });
+        } else {
+            showErrorMessages(nameEmpty, symptomsEmpty, diagnosisEmpty, prescriptionEmpty);
+        }
+    }
+
+    public void navigateToMainScreen() {
+        Intent intent = new Intent(NewIncidentActivity.this, MainScreenActivity.class);
+        startActivity(intent);
+    }
+
+    private void showErrorMessages(boolean nameEmpty, boolean symptomsEmpty, boolean diagnosisEmpty, boolean prescriptionEmpty) {
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (nameEmpty) {
+            errorMessage.append(getString(R.string.patient_name));
+        }
+        if (symptomsEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append(getString(R.string.referent_symptoms));
+        }
+        if (diagnosisEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append(getString(R.string.prescription));
+        }
+        if (prescriptionEmpty) {
+            if (errorMessage.length() > 0) errorMessage.append(", ");
+            errorMessage.append(getString(R.string.prescription));
+        }
+
+        if (errorMessage.length() > 0) {
+            showMessage(getString(R.string.error_title), errorMessage.append(getString(R.string.cannot_empty)).toString());
+        }
     }
 
     private void showMessage(String title, String message) {
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
-                .setCancelable(true)
+                .setPositiveButton("OK", ((dialog, which) -> dialog.dismiss()))
                 .show();
+    }
+
+    public void backPressed(View view) {
+        Intent intent = new Intent(NewIncidentActivity.this, MainScreenActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

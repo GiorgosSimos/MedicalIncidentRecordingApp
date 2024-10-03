@@ -6,9 +6,90 @@
     <string name="email_signup">Please enter your email</string>
     <string name="password_signup">Please enter your password</string>
     <string name="app_descr_main_scr">Medical Incident Recording App Hippocrates Journal</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="doe">Date of Examination</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="main_screen_new_incident_button">New Incident</string>
+    <string name="main_screen_search_button">Search Incident</string>
+    <string name="display_all_button">Display all Incidents</string>
+    <string name="gender">Gender</string>
+    <string name="delete_button">Delete</string>
+    <string name="update_button">Update</string>
+    <string name="save_button">Save</string>
+    <string name="search_act_diagnosis">Diagnosis</string>
+    <string name="search_act_doe">Date of Examination</string>
+    <string name="search_act_name">Patient Name</string>
+    <string name="search_button">Search</string>
+    <string name="select_button">Select</string>
+    <string name="register_button">Register</string>
+    <string name="new_incident_label">Record New Incident</string>
+    <string name="referent_symptoms">Referent Symptoms</string>
+    <string name="prescription">Prescription</string>
+    <string name="dob">Date of Birth</string>
+    <string name="back_descr">Back</string>
+    <string name="email_text_view">Email</string>
+    <string name="password_text_view">password</string>
+    <string name="sign_up_welcome">Welcome to Hippocrates Journal</string>
+    <string name="sign_up_info">Please sign up to begin</string>
+    <string name="search_incident_label">Please select search criteria</string>
+    <string name="success_title">Success</string>
+    <string name="success_signin_description">User signed in successfully!</string>
+    <string name="error_title">Error</string>
+    <string name="error_email_password_empty">Email and password cannot be empty.</string>
+    <string name="error_email_empty">Email cannot be empty.</string>
+    <string name="error_password_empty">Password cannot be empty.</string>
+    <string name="success_signup_description">User profile created successfully!</string>
+    <string name="new_incident">New Incident</string>
+    <string name="user_restriction">Available only for logged in users</string>
+    <string name="update_info">Please update the desired information</string>
+    <string name="type_symptoms">Type in symptoms</string>
+    <string name="type_diagnosis">Type in diagnosis</string>
+    <string name="type_prescription">Type in prescription</string>
+    <string name="update_success">Successful Update</string>
+    <string name="update_success_descr">Incident updated successfully</string>
+    <string name="update_failed">Update Failed</string>
+    <string name="update_failed_descr">An unexpected error occurred, please try again!</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_update">Confirm Update</string>
+    <string name="confirm_save">Are you sure you want to save these changes?</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm_delete">Delete Confirmation</string>
+    <string name="confirm_delete_descr">Are you sure you want to delete this incident?</string>
+    <string name="yes">Yes</string>
+    <string name="success_delete">Successful Delete</string>
+    <string name="success_delete_descr">Incident deleted successfully!</string>
+    <string name="failed_delete">Delete Failed</string>
+    <string name="failed_delete_descr">Failed to delete incident. Please try again.</string>
+    <string name="cannot_empty"> cannot be empty</string>
+    <string name="loading_failed">Loading of all incidents failed</string>
+    <string name="error_generic_descr">Something went wrong, please try again!</string>
+    <string name="register_success_descr">Incident successfully registered!</string>
+    <string name="warning">Warning</string>
+    <string name="warning_criteria">Please define search criteria to continue</string>
+    <string name="warning_fill_in">Fill in the selected field</string>
+    <string name="no_results">No Results</string>
+    <string name="no_results_descr">No incidents matching your search criteria were found.</string>
+    <string name="search_failed">Search Failed</string>
+    <string name="logged_in_user" translatable="false">loggedInUser@gmail.com</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="login_logout">Log In / Sign Up</string>
+    <string name="logout">Logout</string>
+    <string name="logout_successful">Logout Successful</string>
+    <string name="login_singup">Please log in or sign up</string>
+    <string name="copyright" translatable="false">Copyright © 2024 Georgios Simos, Department of Informatics, University of Piraeus</string>
+    <string name="app_summary">The app, Hippocrates Journal, is a mobile application designed for healthcare personnel (doctors, nurses, medical attendants)  to record and manage medical incidents. It allows users to log detailed patient information, including symptoms, diagnosis, prescriptions, and examination dates, while supporting search and display features for past records. The app also includes user roles, with features like login/logout and restrictions for guest users. With a responsive interface, it provides healthcare workers with an efficient way to track patient histories and manage cases, all stored securely in a Cloud Remote Database for easy access and updates.</string>
+    <string name="app_version">App Version 1.0</string>
+    <string name="contact_info">Please feel free to contact us at: g_simos@unipi.gr</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
         <item>they/them</item>
+    </string-array>
+    <string-array name="search_criteria_options">
+        <item>Name</item>
+        <item>Date of Examination</item>
+        <item>Diagnosis</item>
     </string-array>
 </resources>

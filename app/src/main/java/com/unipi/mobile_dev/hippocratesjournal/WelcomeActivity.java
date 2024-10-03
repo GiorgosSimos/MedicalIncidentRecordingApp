@@ -7,13 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,19 +27,13 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_welcome);
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });*/
-        sharedPreferences = getSharedPreferences("com.unipi.mobile_dev.hippocratesjournal", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("com.unipi.mobile_dev.hippocratesjournal",
+                Context.MODE_PRIVATE);
         email = findViewById(R.id.editTextEmailAddress);
         password = findViewById(R.id.editTextPassword);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
     }
 
     public void goSignIn(View view){
@@ -58,11 +48,11 @@ public class WelcomeActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){// Log In Successful
-                                showMessage("Success", "User signed in successfully");
+                                showMessage(getString(R.string.success_title), getString(R.string.success_signin_description));
                                 saveUserType(userEmail);
                                 navigateToMainScreen();
                             } else {
-                                showMessage("Error",task.getException().getLocalizedMessage());
+                                showMessage(getString(R.string.error_title),task.getException().getLocalizedMessage());
                             }
                         }
                     });
@@ -83,7 +73,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void visitor(View view){
-        saveUserType("Guest");
+        saveUserType("Visitor");
         navigateToMainScreen();
     }
 
@@ -95,13 +85,13 @@ public class WelcomeActivity extends AppCompatActivity {
     private void showErrorMessages(boolean emailEmpty, boolean passwordEmpty) {
         String errorMessage;
         if (emailEmpty && passwordEmpty) {
-            errorMessage = "Email and password cannot be empty";
+            errorMessage = getString(R.string.error_email_password_empty);
         } else if (emailEmpty) {
-            errorMessage = "Email cannot be empty";
+            errorMessage = getString(R.string.error_email_empty);
         } else {
-            errorMessage = "Password cannot be empty";
+            errorMessage = getString(R.string.error_password_empty);
         }
-        showMessage("Error", errorMessage);
+        showMessage(getString(R.string.error_title), errorMessage);
     }
 
     void showMessage(String title, String message){

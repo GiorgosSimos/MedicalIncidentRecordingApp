@@ -5,57 +5,49 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_img"
-    tools:context=".NewIncidentActivity">
+    android:background="@color/blueBlack"
+    tools:context=".DetailedIncidentActivity">
 
     <Button
-        android:id="@+id/registerIncidentButton"
+        android:id="@+id/deleteIncidentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#00ACC1"
-
-        android:onClick="registerIncident"
-        android:text="@string/register_button"
+        android:onClick="deleteIncident"
+        android:text="@string/delete_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.750"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.915" />
 
-    <TextView
-        android:id="@+id/textViewTitle"
+    <Button
+        android:id="@+id/updateIncidentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_incident_label"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:backgroundTint="#00ACC1"
+        android:onClick="updateIncident"
+        android:text="@string/update_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.250"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <Spinner
-        android:id="@+id/genderSpinner"
-        android:layout_width="177dp"
-        android:layout_height="53dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.915" />
 
     <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="256dp"
+        android:id="@+id/editTextIncidentName"
+        android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/patient_name"
-        android:inputType="text"
+        android:textColorHint="@color/tanAccent"
+        android:inputType="none"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -64,12 +56,18 @@
         app:layout_constraintVertical_bias="0.08" />
 
     <EditText
-        android:id="@+id/editTextSymptoms"
-        android:layout_width="256dp"
+        android:id="@+id/editTextIncidentSymptoms"
+        android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="false"
         android:hint="@string/referent_symptoms"
-        android:inputType="text"
+        android:textColorHint="@color/teal_200"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -78,12 +76,18 @@
         app:layout_constraintVertical_bias="0.56" />
 
     <EditText
-        android:id="@+id/editTextDiagnosis"
-        android:layout_width="256dp"
+        android:id="@+id/editTextIncidentDiagnosis"
+        android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="false"
         android:hint="@string/diagnosis"
-        android:inputType="text"
+        android:textColorHint="@color/teal_200"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
@@ -92,12 +96,18 @@
         app:layout_constraintVertical_bias="0.68" />
 
     <EditText
-        android:id="@+id/editTextPrescription"
-        android:layout_width="256dp"
+        android:id="@+id/editTextIncidentPrescription"
+        android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:clickable="false"
         android:hint="@string/prescription"
-        android:inputType="text"
+        android:textColorHint="@color/teal_200"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.455"
@@ -106,13 +116,16 @@
         app:layout_constraintVertical_bias="0.80" />
 
     <EditText
-        android:id="@+id/dobEditText"
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:clickable="true"
+        android:id="@+id/incidentDobEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="false"
         android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/dob"
-        android:inputType="none"
+        android:textColorHint="@color/tanAccent"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
@@ -121,13 +134,16 @@
         app:layout_constraintVertical_bias="0.20" />
 
     <EditText
-        android:id="@+id/doeEditText"
-        android:layout_width="190dp"
-        android:layout_height="60dp"
-        android:clickable="true"
+        android:id="@+id/incidentDoeEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="false"
         android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/doe"
-        android:inputType="none"
+        android:textColorHint="@color/tanAccent"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
@@ -135,20 +151,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.32" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/back_descr"
-        android:onClick="backPressed"
-        android:scaleType="fitXY"
+    <EditText
+        android:id="@+id/incidentGenderEditText"
+        android:layout_width="312dp"
+        android:layout_height="64dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/gender"
+        android:textColorHint="@color/tanAccent"
+        android:inputType="text"
+        android:textColor="@color/tanAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
-        app:srcCompat="@drawable/back_icon" />
+        app:layout_constraintVertical_bias="0.437" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
