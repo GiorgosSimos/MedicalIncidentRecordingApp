@@ -78,6 +78,10 @@
     <string name="logout">Logout</string>
     <string name="logout_successful">Logout Successful</string>
     <string name="login_singup">Please log in or sign up</string>
+    <string name="copyright" translatable="false">Copyright © 2024 Georgios Simos, Department of Informatics, University of Piraeus</string>
+    <string name="app_summary">The app, Hippocrates Journal, is a mobile application designed for healthcare personnel (doctors, nurses, medical attendants)  to record and manage medical incidents. It allows users to log detailed patient information, including symptoms, diagnosis, prescriptions, and examination dates, while supporting search and display features for past records. The app also includes user roles, with features like login/logout and restrictions for guest users. With a responsive interface, it provides healthcare workers with an efficient way to track patient histories and manage cases, all stored securely in a Cloud Remote Database for easy access and updates.</string>
+    <string name="app_version">App Version 1.0</string>
+    <string name="contact_info">Please feel free to contact us at: g_simos@unipi.gr</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>

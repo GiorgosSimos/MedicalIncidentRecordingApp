@@ -78,4 +78,7 @@
     <string name="login_logout">Iniciar Sesión / Inscribirse</string>
     <string name="login_singup">Por favor inicia sesión o regístrate</string>
     <string name="logout_successful">Cerrar sesión exitosamente</string>
+    <string name="app_summary">La aplicación Hippocrates Journal es una aplicación móvil diseñada para el personal de salud (doctores, enfermeras, asistentes médicos) para registrar y gestionar incidentes médicos. Permite a los usuarios registrar información detallada de los pacientes, incluyendo síntomas, diagnósticos, prescripciones y fechas de examen, y ofrece funciones de búsqueda y visualización de registros anteriores. La aplicación también incluye roles de usuario, con características como inicio/cierre de sesión y restricciones para usuarios invitados. Con una interfaz receptiva, proporciona a los profesionales de la salud una forma eficiente de rastrear historiales de pacientes y gestionar casos, almacenando todo de manera segura en una base de datos remota en la nube para facilitar el acceso y las actualizaciones.</string>
+    <string name="app_version">Versión de aplicación 1.0</string>
+    <string name="contact_info">No dude en ponerse en contacto con nosotros en: g_simos@unipi.gr</string>
 </resources>
