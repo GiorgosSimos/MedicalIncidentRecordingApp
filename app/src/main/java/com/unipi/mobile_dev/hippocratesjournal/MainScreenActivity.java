@@ -54,27 +54,23 @@ public class MainScreenActivity extends AppCompatActivity {
         }
         user_info.setText(userType);
         menu_icon.setOnClickListener(v -> openDrawer(drawerLayout));
-        home.setOnClickListener(v -> {recreate();});
-        all_incidents.setOnClickListener(v -> {redirectActivity(MainScreenActivity.this,
-                DisplayAllIncidentsActivity.class);});
-        about.setOnClickListener(v -> {redirectActivity(MainScreenActivity.this, AboutActivity.class);});
-        contact.setOnClickListener(v -> {redirectActivity(MainScreenActivity.this, ContactActivity.class);});
-        login_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (userType.equals("Visitor")) {// User is signed in as guest
-                        Toast.makeText(MainScreenActivity.this,
-                                getString(R.string.login_singup), Toast.LENGTH_SHORT).show();
-                } else {// User has signed in with credentials
-                        Toast.makeText(MainScreenActivity.this,
-                                getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
-                }
-                redirectActivity(MainScreenActivity.this, WelcomeActivity.class);
-                SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-                prefsEditor.clear();
-                prefsEditor.apply();
+        home.setOnClickListener(v -> recreate());
+        all_incidents.setOnClickListener(v -> redirectActivity(MainScreenActivity.this,
+                DisplayAllIncidentsActivity.class));
+        about.setOnClickListener(v -> redirectActivity(MainScreenActivity.this, AboutActivity.class));
+        contact.setOnClickListener(v -> redirectActivity(MainScreenActivity.this, ContactActivity.class));
+        login_logout.setOnClickListener(v -> {
+            if (userType.equals("Visitor")) {// User is signed in as guest
+                    Toast.makeText(MainScreenActivity.this,
+                            getString(R.string.login_singup), Toast.LENGTH_SHORT).show();
+            } else {// User has signed in with credentials
+                    Toast.makeText(MainScreenActivity.this,
+                            getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
             }
-
+            redirectActivity(MainScreenActivity.this, WelcomeActivity.class);
+            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+            prefsEditor.clear();
+            prefsEditor.apply();
         });
         bulletTextView = findViewById(R.id.bulletTextView);
         if (language.equals("es")) {
