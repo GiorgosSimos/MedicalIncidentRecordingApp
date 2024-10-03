@@ -64,7 +64,7 @@ public class NewIncidentActivity extends AppCompatActivity {
         dobEditText.setOnClickListener(v -> showDatePickerDialog(dobEditText));
 
         doeEditText = findViewById(R.id.doeEditText);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy", Locale.getDefault());
         String currentDate = sdf.format(new Date());
         // Date of Examination is pre-filled to display current date
         doeEditText.setText(currentDate);
@@ -117,10 +117,10 @@ public class NewIncidentActivity extends AppCompatActivity {
             reference = database.getReference("incidents");
             reference.push().setValue(incident).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    showMessage("Success", "Incident successfully registered!");
+                    showMessage(getString(R.string.success_title), getString(R.string.register_success_descr));
 
                 } else {
-                    showMessage("Error", "Something went wrong, please try again!");
+                    showMessage(getString(R.string.error_title), getString(R.string.error_generic_descr));
                 }
                 navigateToMainScreen();
             });
@@ -138,23 +138,23 @@ public class NewIncidentActivity extends AppCompatActivity {
         StringBuilder errorMessage = new StringBuilder();
 
         if (nameEmpty) {
-            errorMessage.append("Patient name");
+            errorMessage.append(getString(R.string.patient_name));
         }
         if (symptomsEmpty) {
             if (errorMessage.length() > 0) errorMessage.append(", ");
-            errorMessage.append("Symptoms");
+            errorMessage.append(getString(R.string.referent_symptoms));
         }
         if (diagnosisEmpty) {
             if (errorMessage.length() > 0) errorMessage.append(", ");
-            errorMessage.append("Diagnosis");
+            errorMessage.append(getString(R.string.prescription));
         }
         if (prescriptionEmpty) {
             if (errorMessage.length() > 0) errorMessage.append(", ");
-            errorMessage.append("Prescription");
+            errorMessage.append(getString(R.string.prescription));
         }
 
         if (errorMessage.length() > 0) {
-            showMessage("Error", errorMessage.append(" cannot be empty").toString());
+            showMessage(getString(R.string.error_title), errorMessage.append(getString(R.string.cannot_empty)).toString());
         }
     }
 

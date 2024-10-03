@@ -53,11 +53,11 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                showMessage("Success","New user created successfully!");
+                                showMessage(getString(R.string.success_title),getString(R.string.success_signup_description));
                                 user = mAuth.getCurrentUser();
-                                finish();// TODO might be a better way to return to welcome screen
+                                finish();
                             } else {
-                                showMessage("Error", task.getException().getLocalizedMessage());
+                                showMessage(getString(R.string.error_title), task.getException().getLocalizedMessage());
                             }
                         }
                     });
@@ -74,13 +74,13 @@ public class SignUpActivity extends AppCompatActivity {
     private void showErrorMessages(boolean emailEmpty, boolean passwordEmpty) {
         String errorMessage;
         if (emailEmpty && passwordEmpty) {
-            errorMessage = "Email and password cannot be empty";
+            errorMessage = getString(R.string.error_email_password_empty);
         } else if (emailEmpty) {
-            errorMessage = "Email cannot be empty";
+            errorMessage = getString(R.string.error_email_empty);
         } else {
-            errorMessage = "Password cannot be empty";
+            errorMessage = getString(R.string.error_password_empty);
         }
-        showMessage("Error", errorMessage);
+        showMessage(getString(R.string.error_title), errorMessage);
     }
 
     void showMessage(String title, String message){

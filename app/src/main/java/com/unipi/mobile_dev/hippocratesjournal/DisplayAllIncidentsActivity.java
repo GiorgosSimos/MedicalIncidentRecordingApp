@@ -63,7 +63,7 @@ public class DisplayAllIncidentsActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                showAlert("Loading of all incidents failed", error.getMessage());
+                showAlert(getString(R.string.loading_failed), error.getMessage());
             }
         });
     }

@@ -69,9 +69,9 @@ public class DetailedIncidentActivity extends AppCompatActivity {
 
     public void updateIncident(View view) {
         if (!isEditMode) { // If we're in view mode, switch to edit mode
-            Toast.makeText(DetailedIncidentActivity.this, "Please update the desired information", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailedIncidentActivity.this, getString(R.string.update_info), Toast.LENGTH_SHORT).show();
             isEditMode = true;
-            updateButton.setText(R.string.dtld_save_button); // Change button text to "Save"
+            updateButton.setText(R.string.save_button); // Change button text to "Save"
             deleteButton.setEnabled(false);// Delete button is disabled while the update is underway
             clearFields();
             setFieldsEditable(true);      // Enable editing of text fields
@@ -85,9 +85,9 @@ public class DetailedIncidentActivity extends AppCompatActivity {
         textViewDiagnosis.setText("");
         textViewPrescription.setText("");
 
-        textViewSymptoms.setHint("Type in symptoms");
-        textViewDiagnosis.setHint("Type in diagnosis");
-        textViewPrescription.setHint("Type in prescription");
+        textViewSymptoms.setHint(getString(R.string.type_symptoms));
+        textViewDiagnosis.setHint(getString(R.string.type_diagnosis));
+        textViewPrescription.setHint(getString(R.string.type_prescription));
     }
 
     private void updateIncidentInDB() {
@@ -107,14 +107,14 @@ public class DetailedIncidentActivity extends AppCompatActivity {
                     .child("prescription").setValue(updatedPrescription)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            showAlert("Successful Update", "Incident updated successfully");
-                            updateButton.setText(R.string.dtld_update_button);
+                            showAlert(getString(R.string.update_success), getString(R.string.update_success_descr));
+                            updateButton.setText(R.string.update_button);
                             deleteButton.setEnabled(true);
                             //set fields to view mode (non-editable)
                             isEditMode = false;
                             setFieldsEditable(false);
                         } else {
-                            showAlert("Update Failed", "An unexpected error occurred, please try again!");
+                            showAlert(getString(R.string.update_failed), getString(R.string.update_success_descr));
                         }
                     });
         } else {
@@ -142,12 +142,12 @@ public class DetailedIncidentActivity extends AppCompatActivity {
 
     private void showUpdateConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Confirm Update");
-        builder.setMessage("Are you sure you want to save these changes?");
-        builder.setPositiveButton("Confirm", (dialog, which) -> {// Save updated incident to Firebase
+        builder.setTitle(getString(R.string.confirm_update));
+        builder.setMessage(getString(R.string.confirm_save));
+        builder.setPositiveButton(getString(R.string.confirm), (dialog, which) -> {// Save updated incident to Firebase
             updateIncidentInDB();
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> {
+        builder.setNegativeButton(getString(R.string.cancel), (dialog, which) -> {
             dialog.dismiss();
         });
 
@@ -159,16 +159,16 @@ public class DetailedIncidentActivity extends AppCompatActivity {
     public void deleteIncident(View view) {
         // Create an AlertDialog to ask for confirmation
         AlertDialog.Builder builder = new AlertDialog.Builder(DetailedIncidentActivity.this);
-        builder.setTitle("Delete Confirmation");
-        builder.setMessage("Are you sure you want to delete this incident");
+        builder.setTitle(getString(R.string.confirm_delete));
+        builder.setMessage(getString(R.string.confirm_delete_descr));
 
         // If the user clicks Yes, delete the incident
-        builder.setPositiveButton("Yes", ((dialog, which) -> reference.child(incidentId).removeValue()
+        builder.setPositiveButton(getString(R.string.yes), ((dialog, which) -> reference.child(incidentId).removeValue()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        showAlert("Successful Delete","Incident deleted successfully!");
+                        showAlert(getString(R.string.success_delete),getString(R.string.success_delete_descr));
                     } else {
-                        showAlert("Delete Failed","Failed to delete incident. Please try again.");
+                        showAlert(getString(R.string.failed_delete),getString(R.string.failed_delete_descr));
                     }
                     navigateToMainScreen();
                 })));
@@ -194,24 +194,30 @@ public class DetailedIncidentActivity extends AppCompatActivity {
     }
 
     private void showErrorMessages(boolean symptomsEmpty, boolean diagnosisEmpty, boolean prescriptionEmpty) {
-        String errorMessage;
-        if (symptomsEmpty && diagnosisEmpty && prescriptionEmpty){
-            errorMessage = "Symptoms, Diagnosis and Prescription cannot be empty";
-        } else if (symptomsEmpty && diagnosisEmpty) {
-            errorMessage = "Symptoms and Diagnosis cannot be empty";
-        } else if (symptomsEmpty && prescriptionEmpty) {
-            errorMessage = "Symptoms and Prescription cannot be empty";
-        } else if (diagnosisEmpty && prescriptionEmpty) {
-            errorMessage = "Diagnosis and Prescription cannot be empty";
-        } else if (symptomsEmpty) {
-            errorMessage = "Symptoms cannot be empty";
-        } else if (diagnosisEmpty) {
-            errorMessage = "Diagnosis cannot be empty";
-        } else {
-            errorMessage = "Prescription cannot be empty";
+        StringBuilder errorMessage = new StringBuilder();
+
+        if (symptomsEmpty) {
+            errorMessage.append(getString(R.string.referent_symptoms));
         }
-        showMessage("Error", errorMessage);
+        if (diagnosisEmpty) {
+            if (errorMessage.length() > 0) {
+                errorMessage.append(", ");
+            }
+            errorMessage.append(getString(R.string.diagnosis));
+        }
+        if (prescriptionEmpty) {
+            if (errorMessage.length() > 0) {
+                errorMessage.append(", ");
+            }
+            errorMessage.append(getString(R.string.prescription));
+        }
+
+        if (errorMessage.length() > 0) {
+            errorMessage.append(getString(R.string.cannot_empty));
+            showMessage(getString(R.string.error_title), errorMessage.toString());
+        }
     }
+
 
     void showMessage(String title, String message){
         new AlertDialog.Builder(this).

@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/textViewDescription"
         android:layout_width="277dp"
-        android:layout_height="59dp"
+        android:layout_height="84dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="28dp"
         android:text="@string/app_descr_main_scr"
@@ -35,7 +35,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintVertical_bias="0.042" />
 
     <TextView
         android:id="@+id/bulletTextView"
@@ -45,7 +45,6 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.207" />

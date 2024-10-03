@@ -11,11 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class MainScreenActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
+    Locale locale = Locale.getDefault();
+    String language = locale.getLanguage();
     TextView bulletTextView;
-    String userType = "";
+    String userType, bulletText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +29,24 @@ public class MainScreenActivity extends AppCompatActivity {
                 Context.MODE_PRIVATE);
         userType = sharedPreferences.getString("UserType", "");
         bulletTextView = findViewById(R.id.bulletTextView);
-        String bulletText = "<p>The app allows you to perform the following tasks:</p>" +
-                "<br>" +
-                "<ul>" +
-                "<li>Record a new incident </li>" +
-                "<li>Search an incident </li>" +
-                "<li>Display All incidents </li>" +
-                "</ul>";
+        if (language.equals("es")) {
+            bulletText = "<p>La aplicación te permite realizar las siguientes tareas:</p>" +
+                    "<br>" +
+                    "<ul>" +
+                    "<li>Registrar un nuevo incidente</li>" +
+                    "<li>Buscar un incidente</li>" +
+                    "<li>Mostrar todos los incidentes</li>" +
+                    "</ul>";
+        } else {
+            bulletText = "<p>The app allows you to perform the following tasks:</p>" +
+                    "<br>" +
+                    "<ul>" +
+                    "<li>Record a new incident </li>" +
+                    "<li>Search an incident </li>" +
+                    "<li>Display All incidents </li>" +
+                    "</ul>";
+        }
+
         bulletTextView.setText(Html.fromHtml(bulletText, Html.FROM_HTML_MODE_COMPACT));
     }
 
@@ -41,7 +56,7 @@ public class MainScreenActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            showAlert("New Incident", "Available only for logged in users");
+            showAlert(getString(R.string.new_incident), getString(R.string.user_restriction));
         }
     }
 

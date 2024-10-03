@@ -28,7 +28,7 @@
         android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
-        android:hint="@string/dtldIncidentName"
+        android:hint="@string/patient_name"
         android:inputType="none"
         android:textColor="@color/blueBlack"
         android:textColorHint="#E53935"
@@ -42,7 +42,7 @@
         android:id="@+id/searchDoeEditText"
         android:layout_width="312dp"
         android:layout_height="64dp"
-        android:hint="@string/dtld_doe"
+        android:hint="@string/doe"
         android:inputType="none"
         android:textColor="@color/blueBlack"
         android:textColorHint="#E53935"
@@ -57,7 +57,7 @@
         android:layout_width="312dp"
         android:layout_height="64dp"
         android:ems="10"
-        android:hint="@string/dtld_diagnosis"
+        android:hint="@string/diagnosis"
         android:inputType="none"
         android:textColor="@color/blueBlack"
         android:textColorHint="#E53935"
@@ -109,11 +109,11 @@
 
     <TextView
         android:id="@+id/selectCriteriaLabel"
-        android:layout_width="259dp"
-        android:layout_height="30dp"
+        android:layout_width="267dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="none"
-        android:text="Please select search criteria"
+        android:text="@string/search_incident_label"
         android:textAlignment="center"
         android:textColor="@color/blueBlack"
         android:textColorHint="@color/blueBlack"
@@ -124,6 +124,6 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

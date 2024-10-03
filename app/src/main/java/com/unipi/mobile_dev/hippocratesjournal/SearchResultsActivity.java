@@ -76,13 +76,13 @@ public class SearchResultsActivity extends AppCompatActivity {
                     }
                     incidentAdapter.notifyDataSetChanged();
                 } else { // Redirect to search screen
-                    redirectAlert("No Results", "No incidents matching your search criteria were found.");
+                    redirectAlert(getString(R.string.no_results), getString(R.string.no_results_descr));
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                showAlert("Search Failed", error.getMessage());
+                showAlert(getString(R.string.search_failed), error.getMessage());
             }
         });
     }

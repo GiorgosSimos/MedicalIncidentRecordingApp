@@ -86,7 +86,7 @@ public class SearchActivity extends AppCompatActivity {
     public void executeSearch(View view) {
         String child = "", textViewValue = "";
         if (searchCriteria == null) {
-            showAlert("Warning", "Please define search criteria to continue");
+            showAlert(getString(R.string.warning), getString(R.string.warning_criteria));
         } else {
             switch (searchCriteria) {
                 case "Name":
@@ -107,7 +107,7 @@ public class SearchActivity extends AppCompatActivity {
                 //Start the SearchResultsActivity with the selected searchCriteria and filled text value
                 goSearchResults(child, textViewValue);
             } else {
-                showAlert("Warning", "Fill in the selected field");
+                showAlert(getString(R.string.warning), getString(R.string.warning_fill_in));
             }
         }
     }
