@@ -11,7 +11,7 @@
     <string name="diagnosis">Diagnosis</string>
     <string name="main_screen_new_incident_button">New Incident</string>
     <string name="main_screen_search_button">Search Incident</string>
-    <string name="main_screen_display_all_button">Display all Incidents</string>
+    <string name="display_all_button">Display all Incidents</string>
     <string name="gender">Gender</string>
     <string name="delete_button">Delete</string>
     <string name="update_button">Update</string>
@@ -70,6 +70,14 @@
     <string name="no_results">No Results</string>
     <string name="no_results_descr">No incidents matching your search criteria were found.</string>
     <string name="search_failed">Search Failed</string>
+    <string name="logged_in_user" translatable="false">loggedInUser@gmail.com</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="login_logout">Log In / Sign Up</string>
+    <string name="logout">Logout</string>
+    <string name="logout_successful">Logout Successful</string>
+    <string name="login_singup">Please log in or sign up</string>
     <string-array name="gender_options">
         <item>she/her</item>
         <item>he/him</item>
