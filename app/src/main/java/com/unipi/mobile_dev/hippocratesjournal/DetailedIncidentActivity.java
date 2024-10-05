@@ -1,6 +1,8 @@
 package com.unipi.mobile_dev.hippocratesjournal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailedIncidentActivity extends AppCompatActivity {
 
+    private static final String PREFS_NAME = "com.unipi.mobile_dev.hippocratesjournal";
+    private static final String USER_TYPE_KEY = "UserType";
+    SharedPreferences sharedPreferences;
     TextView textViewName,
             textViewDob,
             textViewDoe,
@@ -25,6 +30,7 @@ public class DetailedIncidentActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     String incidentId;
+    String userType = "";
     Button updateButton, deleteButton;
     private boolean isEditMode = false;// Variable used to determine if we're in view or edit mode
 
@@ -32,6 +38,8 @@ public class DetailedIncidentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_incident);
+        sharedPreferences = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        userType = sharedPreferences.getString(USER_TYPE_KEY, "");
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("incidents");
 
@@ -157,27 +165,32 @@ public class DetailedIncidentActivity extends AppCompatActivity {
 
     // Delete the incident from Firebase using incidentId
     public void deleteIncident(View view) {
-        // Create an AlertDialog to ask for confirmation
-        AlertDialog.Builder builder = new AlertDialog.Builder(DetailedIncidentActivity.this);
-        builder.setTitle(getString(R.string.confirm_delete));
-        builder.setMessage(getString(R.string.confirm_delete_descr));
+        if (!userType.equals("Visitor")) {
+            // Create an AlertDialog to ask for confirmation
+            AlertDialog.Builder builder = new AlertDialog.Builder(DetailedIncidentActivity.this);
+            builder.setTitle(getString(R.string.confirm_delete));
+            builder.setMessage(getString(R.string.confirm_delete_descr));
 
-        // If the user clicks Yes, delete the incident
-        builder.setPositiveButton(getString(R.string.yes), ((dialog, which) -> reference.child(incidentId).removeValue()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        showAlert(getString(R.string.success_delete),getString(R.string.success_delete_descr));
-                    } else {
-                        showAlert(getString(R.string.failed_delete),getString(R.string.failed_delete_descr));
-                    }
-                    navigateToMainScreen();
-                })));
+            // If the user clicks Yes, delete the incident
+            builder.setPositiveButton(getString(R.string.yes), ((dialog, which) -> reference.child(incidentId).removeValue()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            showAlert(getString(R.string.success_delete),getString(R.string.success_delete_descr));
+                        } else {
+                            showAlert(getString(R.string.failed_delete),getString(R.string.failed_delete_descr));
+                        }
+                        navigateToMainScreen();
+                    })));
 
-        // If the user clicks No, nothing happens
-        builder.setNegativeButton("No", ((dialog, which) -> dialog.dismiss()));
+            // If the user clicks No, nothing happens
+            builder.setNegativeButton("No", ((dialog, which) -> dialog.dismiss()));
 
-        AlertDialog dialog = builder.create();
-        dialog.show();
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else {
+            showAlert(getString(R.string.warning), getString(R.string.user_restriction));
+        }
+
     }
 
     private void showAlert(String title, String message) {

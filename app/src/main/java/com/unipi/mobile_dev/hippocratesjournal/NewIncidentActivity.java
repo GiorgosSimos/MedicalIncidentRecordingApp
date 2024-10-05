@@ -154,7 +154,7 @@ public class NewIncidentActivity extends AppCompatActivity {
         }
 
         if (errorMessage.length() > 0) {
-            showMessage(getString(R.string.error_title), errorMessage.append(getString(R.string.cannot_empty)).toString());
+            showMessage(getString(R.string.error_title), errorMessage.append(" ").append(getString(R.string.cannot_empty)).toString());
         }
     }
 

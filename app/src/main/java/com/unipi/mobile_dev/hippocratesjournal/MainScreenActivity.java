@@ -21,6 +21,8 @@ import java.util.Locale;
 
 public class MainScreenActivity extends AppCompatActivity {
 
+    private static final String PREFS_NAME = "com.unipi.mobile_dev.hippocratesjournal";
+    private static final String USER_TYPE_KEY = "UserType";
     DrawerLayout drawerLayout;
     ImageView menu_icon;
     LinearLayout home, all_incidents, about, contact, login_logout;
@@ -34,9 +36,8 @@ public class MainScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        sharedPreferences = getApplicationContext().getSharedPreferences("com.unipi.mobile_dev.hippocratesjournal",
-                Context.MODE_PRIVATE);
-        userType = sharedPreferences.getString("UserType", "");
+        sharedPreferences = getApplicationContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        userType = sharedPreferences.getString(USER_TYPE_KEY, "");
         drawerLayout = findViewById(R.id.drawerLayout);
         menu_icon = findViewById(R.id.burger_menu);
         user_info = findViewById(R.id.user_info);
@@ -47,11 +48,9 @@ public class MainScreenActivity extends AppCompatActivity {
         contact = findViewById(R.id.contact);
         login_logout = findViewById(R.id.login_logout);
         login_logout_text = findViewById(R.id.login_logout_text);
-        if (userType.equals("Visitor")) {
-            login_logout_text.setText(getString(R.string.login_logout));
-        } else {
-            login_logout_text.setText(getString(R.string.logout));
-        }
+        login_logout_text.setText(userType.equals("Visitor")
+                ? getString(R.string.login_logout)
+                : getString(R.string.logout));
         user_info.setText(userType);
         menu_icon.setOnClickListener(v -> openDrawer(drawerLayout));
         home.setOnClickListener(v -> recreate());
@@ -59,19 +58,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 DisplayAllIncidentsActivity.class));
         about.setOnClickListener(v -> redirectActivity(MainScreenActivity.this, AboutActivity.class));
         contact.setOnClickListener(v -> redirectActivity(MainScreenActivity.this, ContactActivity.class));
-        login_logout.setOnClickListener(v -> {
-            if (userType.equals("Visitor")) {// User is signed in as guest
-                    Toast.makeText(MainScreenActivity.this,
-                            getString(R.string.login_singup), Toast.LENGTH_SHORT).show();
-            } else {// User has signed in with credentials
-                    Toast.makeText(MainScreenActivity.this,
-                            getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
-            }
-            redirectActivity(MainScreenActivity.this, WelcomeActivity.class);
-            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-            prefsEditor.clear();
-            prefsEditor.apply();
-        });
+        login_logout.setOnClickListener(v -> displayLoginLogoutMessage());
         bulletTextView = findViewById(R.id.bulletTextView);
         if (language.equals("es")) {
             bulletText = "<p>La aplicación te permite realizar las siguientes tareas:</p>" +
@@ -140,6 +127,22 @@ public class MainScreenActivity extends AppCompatActivity {
                 .setMessage(message)
                 .setPositiveButton("OK", ((dialog, which) -> dialog.dismiss()))
                 .show();
+    }
+
+    private void displayLoginLogoutMessage() {
+        if (userType.equals("Visitor")) {
+            Toast.makeText(this, getString(R.string.login_singup), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getString(R.string.logout_successful), Toast.LENGTH_SHORT).show();
+            clearUserPreferences();
+        }
+        redirectActivity(this, WelcomeActivity.class);
+    }
+
+    private void clearUserPreferences() {
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.clear();
+        prefsEditor.apply();
     }
 
 }
