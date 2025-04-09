@@ -16,7 +16,7 @@ A mobile Android application built with Java to assist medical professionals in 
 - [Future Enhancements](#-future-enhancements)
 - [How to Run on PC](#-how-to-run-on-pc)
 - [How to Install & Run APK](#-how-to-install--run-the-apk-on-android)
-- [Preview](#preview)
+- [Preview](#-preview)
 
 ## 🧰 Features
 
@@ -106,7 +106,7 @@ If you don't want to set up Android Studio, you can simply install the app by do
 ---
 
 
-## Preview
+## 🖼️ Preview
 
 ### Welcome Screen
 ![Welcome Screen](app/src/main/res/drawable/welcomescreen.png)
