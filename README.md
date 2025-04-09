@@ -105,7 +105,6 @@ If you don't want to set up Android Studio, you can simply install the app by do
 
 ---
 
-
 ## 🖼️ Preview
 
 ### Welcome Screen
