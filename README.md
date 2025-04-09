@@ -1,6 +1,6 @@
 # 📜 Hippocrate's Journal
 
-A mobile Android application built with Java to assist medical professionals in recording and managing patient medical incidents. The app provides a user-friendly interface for securely registering, searching, updating, and deleting patient incident records. All data is stored and retrieved in real-time using Firebase Authentication and Firebase Realtime Database. The app is named after Hippocrates, an ancient Greek physician and philoshopher, considered to be the "Father of Medicine".
+A mobile Android application built with Java to assist medical professionals in recording and managing patient medical incidents. The app provides a user-friendly interface for securely registering, searching, updating, and deleting patient incident records. All data is stored and retrieved in real-time using Firebase Authentication and Firebase Realtime Database. Named after Hippocrates, an ancient Greek physician and philoshopher, considered to be the "Father of Medicine".
 
 > 🎓 Developed during my MSc in Informatics as a demonstration of mobile app development, Firebase integration, and patient-centric data management.
 
